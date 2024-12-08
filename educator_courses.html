@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Educator Courses - LearnCraft</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container my-5">
+        <h2 class="text-center mb-4">Educator Dashboard</h2>
+
+        <!-- Pre-Existing Courses -->
+        <div class="card p-4 mb-4 shadow">
+            <h4>Available Courses</h4>
+            <div id="availableCoursesContainer" class="row g-3">
+                <!-- Example pre-existing courses -->
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="images/course1.png" class="card-img-top" alt="Course 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Structures & Algorithms</h5>
+                            <button class="btn btn-primary btn-sm add-course">Add</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="images/course2.jpg" class="card-img-top" alt="Course 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Java Programming Language</h5>
+                            <button class="btn btn-primary btn-sm add-course">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <img src="images/course3.jpeg" class="card-img-top" alt="Course 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Development</h5>
+                            <button class="btn btn-primary btn-sm add-course">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Courses Section -->
+        <div>
+            <h4 class="mb-3">My Courses</h4>
+            <div id="myCoursesContainer" class="row g-3">
+                <!-- Added courses will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const availableCoursesContainer = document.getElementById("availableCoursesContainer");
+        const myCoursesContainer = document.getElementById("myCoursesContainer");
+
+        // Add click event listener to all "Add" buttons
+        availableCoursesContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains("add-course")) {
+                const courseCard = event.target.closest(".card");
+
+                // Clone the course card
+                const clonedCard = courseCard.cloneNode(true);
+
+                // Remove the "Add" button from the cloned card
+                const addButton = clonedCard.querySelector(".add-course");
+                if (addButton) {
+                    addButton.remove();
+                }
+
+                // Append the cloned card to the "My Courses" section
+                myCoursesContainer.appendChild(clonedCard);
+
+                // Show a message
+                alert("Course added successfully!");
+            }
+        });
+    </script>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
